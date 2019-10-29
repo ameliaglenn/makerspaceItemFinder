@@ -55,15 +55,21 @@ def findItemResponse(intent_request):
     print(intent_request["intent"]["slots"]["item"])
     specificItem=intent_request["intent"]["slots"]["item"]["value"]
     
+    locations={"balsa wood":"Back corner next to workbenches in cardboard container","bluetooth bit":"Littlebits station, left side, sixth row from the top"
+        
+    }
+    
+    speech_output=locations[specificItem]
+    
     #this is a TEMPORARY set up, I'll make it more efficient once we're sure this works
-    if specificItem=="fabric":
+   """ if specificItem=="fabric":
         speech_output="the fabic is on the second protocart on whatever shelf."
     elif specificItem=="dowel rods":
         speech_output="Dowel rods are on the wall to the left of the wood station"
     else:
-        speech_output="Sorry, I don't have a location for that item. Please ask a TA or Dr. Samosky."
+        speech_output="Sorry, I don't have a location for that item. Please ask a TA or Dr. Samosky.""""
     reprompt_text=speech_output
-    should_end_session=True
+    should_end_session=False
     return build_response(session_attributes, build_speechlet_response(card_title,speech_output,reprompt_text,should_end_session))
         
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
