@@ -1,0 +1,402 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "g thirty four",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "tell g thirty four i need help",
+                        "help me locate items",
+                        "what do i ask you to help me locate items"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "findItem",
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "item"
+                        }
+                    ],
+                    "samples": [
+                        "locate {item} in g thirty four",
+                        "which area is {item} in g thirty four",
+                        "where is {item} in g thirty four"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "item",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "pen",
+                                "synonyms": [
+                                    "pencils",
+                                    "markers",
+                                    "sticky notes",
+                                    "index cards",
+                                    "sharpies"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "center punch",
+                                "synonyms": [
+                                    "Deburring tools",
+                                    "deburring tool",
+                                    "automatic center punch",
+                                    "center punches",
+                                    "automatic center punches"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "clip",
+                                "synonyms": [
+                                    "stapler",
+                                    "scissors",
+                                    "rubber bands",
+                                    "zip ties",
+                                    "paper clips",
+                                    "safety pins",
+                                    "straight pins",
+                                    "clothespins"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sandpaper",
+                                "synonyms": [
+                                    "Sand paper",
+                                    "fine sand paper",
+                                    "coarse sand paper"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tape",
+                                "synonyms": [
+                                    "velcro",
+                                    "scotch tape",
+                                    "packing tape",
+                                    "mounting tape",
+                                    "duct tape"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "glue",
+                                "synonyms": [
+                                    "hot glue",
+                                    "adhesive",
+                                    "paper cement",
+                                    "super glue",
+                                    "wood glue"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "exacto",
+                                "synonyms": [
+                                    "exacto knives",
+                                    "sewing needles",
+                                    "cutting",
+                                    "newspaper"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ratchet",
+                                "synonyms": [
+                                    "Socket wrench",
+                                    "socket wrenches",
+                                    "sockets",
+                                    "socket sets",
+                                    "ratchets"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Clamps",
+                                "synonyms": [
+                                    "c clamps",
+                                    "c clamp",
+                                    "clamp",
+                                    "small clamps"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "straw",
+                                "synonyms": [
+                                    "modeling clay",
+                                    "play doh",
+                                    "marbles",
+                                    "rubber"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lego",
+                                "synonyms": [
+                                    "pipe cleaner",
+                                    "knex",
+                                    "cotton",
+                                    "string"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "cables",
+                                "synonyms": [
+                                    "dvi",
+                                    "usb cables",
+                                    "usb",
+                                    "audio cables",
+                                    "vga cables",
+                                    "vga",
+                                    "audio visual cables",
+                                    "computer adaptors"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Six thirty two nuts",
+                                "synonyms": [
+                                    "quarter twenty eight nuts",
+                                    "quarter twenty nuts",
+                                    "ten thirty two nuts",
+                                    "ten twenty four nuts",
+                                    "eight thirty two nuts"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tubing",
+                                "synonyms": [
+                                    "hoses",
+                                    "tubes",
+                                    "extension cords"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pliers",
+                                "synonyms": [
+                                    "jaw-locking pliers",
+                                    "needle nose pliers",
+                                    "needlenose pliers",
+                                    "dikes"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Drill bit",
+                                "synonyms": [
+                                    "drill bits",
+                                    "driver bit",
+                                    "driver bits"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Quarter twenty tap",
+                                "synonyms": [
+                                    "Quarter twenty taps",
+                                    "quarter twenty-eight taps",
+                                    "quarter twenty-eight tap"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Cardstock",
+                                "synonyms": [
+                                    "printing cardstock",
+                                    "colored cardstock",
+                                    "white cardstock"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Saw",
+                                "synonyms": [
+                                    "cordless drills",
+                                    "drills",
+                                    "impact drivers",
+                                    "rubber mallets",
+                                    "mallets",
+                                    "hammers",
+                                    "backsaws",
+                                    "Hacksaws"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mat",
+                                "synonyms": [
+                                    "cutting mat",
+                                    "triangle",
+                                    "ruler"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Quick clamps",
+                                "synonyms": [
+                                    "vice grips"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "domino",
+                                "synonyms": [
+                                    "balloon"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gloves",
+                                "synonyms": [
+                                    "microfiber",
+                                    "bungee",
+                                    "solvent",
+                                    "rubber gloves"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "foam",
+                                "synonyms": [
+                                    "foamcore"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Digital calipers",
+                                "synonyms": [
+                                    "caliper",
+                                    "digital caliper"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pvc"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "electrical tape"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "slide potentiometer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "multimeter"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bluetooth bit",
+                                "synonyms": [
+                                    "bluetooth BLE little bit",
+                                    "bluetooth BLE bit",
+                                    "bluetooth BLE",
+                                    "blutetooth little bit"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "balsa wood",
+                                "synonyms": [
+                                    "three eighths balsa wood",
+                                    "three eighths balsa",
+                                    "one half inch balsa",
+                                    "one half inch balsa wood",
+                                    "three fourths inch balsa wood",
+                                    "half inch balsa wood",
+                                    "half inch balsa",
+                                    "balsa strips",
+                                    "balsa"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fabric",
+                                "synonyms": [
+                                    "felt",
+                                    "yarn",
+                                    "fabrics"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dowel rods",
+                                "synonyms": [
+                                    "five eighths dowel rods",
+                                    "five sixteenths dowel rods",
+                                    "three eighths dowel rods",
+                                    "dowels",
+                                    "half inch dowel rod",
+                                    "half inch dowel rods",
+                                    "one half inch dowel rod",
+                                    "dowel rod"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
