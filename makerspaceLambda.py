@@ -14,7 +14,7 @@ def on_launch(launch_request, session):
 def get_welcome_response():
     session_attributes = {}
     card_title = "Welcome"
-    speech_output = "Hello students! I am here to help you find things. Please say, Alexa find me the insert item here, for help finding a material." 
+    speech_output = "Hello students! I am here to help you find things. Please say, Alexa locate insert item here in g thirty four, for help finding a material." 
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with the same text.
     reprompt_text = speech_output
@@ -55,15 +55,22 @@ def findItemResponse(intent_request):
     print(intent_request["intent"]["slots"]["item"])
     specificItem=intent_request["intent"]["slots"]["item"]["value"]
     
-    #this is a TEMPORARY set up, I'll make it more efficient once we're sure this works
-    if specificItem=="fabric":
-        speech_output="the fabic is on the second protocart on whatever shelf."
-    elif specificItem=="dowel rods":
-        speech_output="Dowel rods are on the wall to the left of the wood station"
-    else:
-        speech_output="Sorry, I don't have a location for that item. Please ask a TA or Dr. Samosky."
+    locations={"balsa wood":"Back corner next to workbenches in cardboard container","bluetooth bit":"Littlebits station, left side, sixth row from the top",
+           "Saw":"Back corner next to workbenches on the wall","Cardstock":"Under the printer","Quarter twenty tap":"Left workbench, black drawers, fourth row from the top",
+           "multimeter":"soldering station, sixth row from the bottom","slide potentiometer":"soldering station, third row from the top",
+           "electrical tape":"soldering station, above the oscilliscope","Digital calipers":"Red cart, second drawer from the top","pvc":"Cart four, all rows",
+           "Drill bit":"Red cart, fourth drawer from bottom","Pliers":"Red cart, second and third drawers from top","tubing":"Cart three, bottom row",
+           "cable":"Cart three, third row from top","gloves":"Cart three, second row from top","foam":"Cart two, bottom row",
+           "Six thirty two nuts":"Right work bench, black drawers, fourth row from top","lego":"Cart two, fourth row from top","straw":"Cart two, third row from top",
+           "domino":"Cart two, second row from top","Clamps":"Right workbench, left side and underneath","fabric":"Cart two, third row from bottom",
+           "mat":"Cart one, bottom row","ratchet":"Red cart, fourth row from top","exacto":"Cart one, second row from bottom","glue":"Cart one, third row from bottom",
+           "tape":"Cart one, third row from top","sandpaper":"Red cart, second row from bottom","clip":"Cart one, second row from top",
+           "center punch":"Left workbench, black drawers, third row from the top","pen":"Cart one, top row","Quick clamps":"right workbench, right side",
+           "dowel rods":"Back corner next to workbenches along the wall"}
+    
+    speech_output=locations[specificItem]
     reprompt_text=speech_output
-    should_end_session=True
+    should_end_session=False
     return build_response(session_attributes, build_speechlet_response(card_title,speech_output,reprompt_text,should_end_session))
         
 def build_speechlet_response(title, output, reprompt_text, should_end_session):
