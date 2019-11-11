@@ -1,5 +1,5 @@
-# notJarvis
-We're making a digital assistant program that can find things in a database and tell a user [things about it]
+# Makerspace Item Finder
+We're making a digital assistant program that can find things in a database and tell a user its location within a makerspace.
 
 Initial Team Members: Frank Czura, Ben Desiderato, Amelia Glenn, Warren Lester, Shane Riley
 
