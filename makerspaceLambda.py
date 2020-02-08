@@ -54,6 +54,7 @@ def findItemResponse(intent_request):
     speech_output=""
     print(intent_request["intent"]["slots"]["item"])
     specificItem=intent_request["intent"]["slots"]["item"]["value"]
+    specificItem=specificItem.lower()
     
     #this is a TEMPORARY set up, I'll make it more efficient once we're sure this works
     if specificItem=="fabric":
