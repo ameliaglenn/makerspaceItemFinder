@@ -1,5 +1,27 @@
+import pandas as pd
+#pulls in the excell sheet, separates out the location and synonym dictionary bases
+inventory=pd.read_excel(r'C:\Users\ameli\Documents\GitHub\notJarvis\Alexa Skills Inventory.xlsx')
+location=pd.DataFrame(inventory, columns=['Item Name','Location in G34'])
+synonyms=pd.DataFrame(inventory, columns=['Alternative Names'])
+totalRows=len(inventory.axes[0])
+l=location.to_dict(orient='list')
+s=synonyms.values.tolist()
+#creates location and synonym dictionaries
+loc={}
+syn={}
+for i in range(totalRows):
+    #converts the single-string "list" of synonyms to an actual list
+    specificSyn=''.join(s[i])
+    synonymList=specificSyn.split(', ')
+    totSyn=len(synonymList)
+    #fills loc and syn dicts in lowercase
+    loc[l['Item Name'][i].lower()]=l['Location in G34'][i]
+    for k in range(totSyn):
+        syn[synonymList[k].lower()]=l['Item Name'][i].lower()
+
 import json
 
+#sends imported json to correct event type function
 def lambda_handler(event, context):
     if event['request']['type'] == "LaunchRequest":
         return on_launch(event['request'], event['session'])
@@ -56,20 +78,7 @@ def findItemResponse(intent_request):
     specificItem=intent_request["intent"]["slots"]["item"]["value"]
     specificItem=specificItem.lower()
     
-    locations={"balsa wood":"Back corner next to workbenches in cardboard container","bluetooth bit":"Littlebits station, left side, sixth row from the top",
-           "Saw":"Back corner next to workbenches on the wall","Cardstock":"Under the printer","Quarter twenty tap":"Left workbench, black drawers, fourth row from the top",
-           "multimeter":"soldering station, sixth row from the bottom","slide potentiometer":"soldering station, third row from the top",
-           "electrical tape":"soldering station, above the oscilliscope","Digital calipers":"Red cart, second drawer from the top","pvc":"Cart four, all rows",
-           "Drill bit":"Red cart, fourth drawer from bottom","Pliers":"Red cart, second and third drawers from top","tubing":"Cart three, bottom row",
-           "cable":"Cart three, third row from top","gloves":"Cart three, second row from top","foam":"Cart two, bottom row",
-           "Six thirty two nuts":"Right work bench, black drawers, fourth row from top","lego":"Cart two, fourth row from top","straw":"Cart two, third row from top",
-           "domino":"Cart two, second row from top","Clamps":"Right workbench, left side and underneath","fabric":"Cart two, third row from bottom",
-           "mat":"Cart one, bottom row","ratchet":"Red cart, fourth row from top","exacto":"Cart one, second row from bottom","glue":"Cart one, third row from bottom",
-           "tape":"Cart one, third row from top","sandpaper":"Red cart, second row from bottom","clip":"Cart one, second row from top",
-           "center punch":"Left workbench, black drawers, third row from the top","pen":"Cart one, top row","Quick clamps":"right workbench, right side",
-           "dowel rods":"Back corner next to workbenches along the wall"}
-    
-    speech_output=locations[specificItem]
+    speech_output=loc[specificItem]
     reprompt_text=speech_output
     should_end_session=False
     return build_response(session_attributes, build_speechlet_response(card_title,speech_output,reprompt_text,should_end_session))
