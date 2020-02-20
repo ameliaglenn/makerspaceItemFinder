@@ -1,24 +1,8 @@
 import pandas as pd
 #pulls in the excell sheet, separates out the location and synonym dictionary bases
 inventory=pd.read_excel(r'C:\Users\ameli\Documents\GitHub\notJarvis\Alexa Skills Inventory.xlsx')
-location=pd.DataFrame(inventory, columns=['Item Name','Location in G34'])
-synonyms=pd.DataFrame(inventory, columns=['Alternative Names'])
-totalRows=len(inventory.axes[0])
-l=location.to_dict(orient='list')
-s=synonyms.values.tolist()
 #creates location and synonym dictionaries
 loc={}
-syn={}
-for i in range(totalRows):
-    #converts the single-string "list" of synonyms to an actual list
-    specificSyn=''.join(s[i])
-    synonymList=specificSyn.split(', ')
-    totSyn=len(synonymList)
-    #fills loc and syn dicts in lowercase
-    loc[l['Item Name'][i].lower()]=l['Location in G34'][i]
-    for k in range(totSyn):
-        syn[synonymList[k].lower()]=l['Item Name'][i].lower()
-
 import json
 
 #sends imported json to correct event type function
@@ -31,6 +15,8 @@ def lambda_handler(event, context):
         return on_session_ended(event['request'], event['session'])
 
 def on_launch(launch_request, session):
+    dictionaryCreator(loc,inventory)
+    print(loc)
     return get_welcome_response()
     
 def get_welcome_response():
@@ -42,6 +28,22 @@ def get_welcome_response():
     reprompt_text = speech_output
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(card_title, speech_output, reprompt_text, should_end_session))
+
+def dictionaryCreator(locations, file):
+    location=pd.DataFrame(file, columns=['Item Name','Location in G34'])
+    synonyms=pd.DataFrame(file, columns=['Alternative Names'])
+    totalRows=len(file.axes[0])
+    l=location.to_dict(orient='list')
+    s=synonyms.values.tolist()
+    for i in range(totalRows):
+    #converts the single-string "list" of synonyms to an actual list
+        specificSyn=''.join(s[i])
+        synonymList=specificSyn.split(', ')
+        totSyn=len(synonymList)
+        #fills loc and syn dicts in lowercase
+        locations[l['Item Name'][i].lower()]=l['Location in G34'][i]
+        for k in range(totSyn):
+            locations[synonymList[k].lower()]=l['Location in G34'][i]
 
 def on_session_ended(session_ended_request, session):
     #Called when the user ends the session. Is not called when the skill returns should_end_session=true
@@ -77,7 +79,6 @@ def findItemResponse(intent_request):
     print(intent_request["intent"]["slots"]["item"])
     specificItem=intent_request["intent"]["slots"]["item"]["value"]
     specificItem=specificItem.lower()
-    
     speech_output=loc[specificItem]
     reprompt_text=speech_output
     should_end_session=False

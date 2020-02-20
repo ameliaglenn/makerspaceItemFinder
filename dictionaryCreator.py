@@ -8,7 +8,6 @@ l=location.to_dict(orient='list')
 s=synonyms.values.tolist()
 #creates location and synonym dictionaries
 loc={}
-syn={}
 for i in range(totalRows):
     #converts the single-string "list" of synonyms to an actual list
     specificSyn=''.join(s[i])
@@ -17,7 +16,7 @@ for i in range(totalRows):
     #fills loc and syn dicts in lowercase
     loc[l['Item Name'][i].lower()]=l['Location in G34'][i]
     for k in range(totSyn):
-        syn[synonymList[k].lower()]=l['Item Name'][i].lower()
+        loc[synonymList[k].lower()]=l['Location in G34'][i]
     
-print(syn)
+#print(syn)
 print(loc)
